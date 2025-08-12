@@ -1,10 +1,10 @@
 use crate::models::*;
-use axum::{response::IntoResponse, Json};
+use axum::{Json, response::IntoResponse};
 
 // ---- CRUD for Questions ----
 
 pub async fn create_question(Json(question): Json<Question>) -> impl IntoResponse {
-    Json(QuestionDetail{
+    Json(QuestionDetail {
         question_uuid: "question_uuid".to_string(),
         title: "title".to_string(),
         description: "description".to_string(),
@@ -28,7 +28,7 @@ pub async fn delete_question(Json(question_uuid): Json<QuestionId>) {
 // ---- CRUD for Answers ----
 
 pub async fn create_answer(Json(answer): Json<Answer>) -> impl IntoResponse {
-    Json(AnswerDetail{
+    Json(AnswerDetail {
         answer_uuid: "answer_uuid".to_string(),
         question_uuid: "question_uuid".to_string(),
         content: "content".to_string(),
@@ -36,9 +36,8 @@ pub async fn create_answer(Json(answer): Json<Answer>) -> impl IntoResponse {
     })
 }
 
-
 pub async fn read_answers() -> impl IntoResponse {
-    Json (vec![AnswerDetail{
+    Json(vec![AnswerDetail {
         answer_uuid: "answer_uuid".to_string(),
         question_uuid: "question_uuid".to_string(),
         content: "content".to_string(),
