@@ -26,7 +26,6 @@ async fn main() {
         .await
         .expect("Database connection failed!");
 
-
     // below are simple query test
     let recs = sqlx::query!("SELECT * FROM questions")
         .fetch_all(&pool)

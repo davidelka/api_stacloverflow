@@ -58,7 +58,6 @@ impl QuestionsDao for QuestionsDaoImpl {
     }
 
     async fn get_questions(&self) -> Result<Vec<QuestionDetail>, DBError> {
-
         let records = sqlx::query!("SELECT * FROM questions")
             .fetch_all(&self.db)
             .await

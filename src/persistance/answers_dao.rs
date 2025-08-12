@@ -66,7 +66,6 @@ impl AnswersDao for AnswersDaoImpl {
     }
 
     async fn delete_answer(&self, answer_uuid: String) -> Result<(), DBError> {
-
         let uuid = sqlx::types::Uuid::parse_str(&answer_uuid).map_err(|e| {
             DBError::InvalidUUID(format!(
                 "uuid parse failed {} {} ",
